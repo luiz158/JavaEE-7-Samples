@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>org.javaee7.jpa</groupId>
-    <artifactId>jpa-samples</artifactId>
+    <artifactId>arun-jpa-samples</artifactId> 
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>

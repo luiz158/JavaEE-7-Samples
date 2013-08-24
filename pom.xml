@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.javaee7</groupId>
@@ -52,13 +52,14 @@
         <module>arun-javamail</module>
         <module>arun-jaxrs</module>
         <module>arun-jms</module>
-        <module>arun-arun-jpa</module>
-        <module>arun-arun-jta</module>
+        <module>arun-jpa</module>
+        <module>arun-jta</module>
         <module>arun-jsf</module>
         <module>arun-json</module>
         <module>servlet</module> 
         <module>arun-validation</module>
         <module>arun-websocket</module>
-    </modules>
+    <module>jsp</module>
+  </modules>
 
 </project>

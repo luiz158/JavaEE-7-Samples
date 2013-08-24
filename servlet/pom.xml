@@ -40,6 +40,7 @@
     <module>tutotial-mood</module>
     <module>tutorial-dukeetf</module>
     <module>arun-protocol-handler</module>
+    <module>netbeans-servlet-samples</module>
   </modules>
 
 </project>
