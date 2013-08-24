@@ -60,6 +60,11 @@ public class FileUploadAnnotation extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+        finally{
+            inputStream.close();
+            fileOutputStream.close();
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

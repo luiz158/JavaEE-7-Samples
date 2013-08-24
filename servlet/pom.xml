@@ -37,6 +37,9 @@
 		<module>http-upgrade-war</module>
 		-->
     <module>fileupload</module>
+    <module>tutotial-mood</module>
+    <module>tutorial-dukeetf</module>
+    <module>arun-protocol-handler</module>
   </modules>
 
 </project>
