@@ -58,12 +58,13 @@
         <module>arun-json</module>
         <module>arun-servlet</module> 
         <module>arun-validation</module>
-        <module>arun-websocket</module>
+        <module>arun-websocket</module> 
         <module>tutorial-servlet</module> 
-    <module>jsp</module>
-    <module>jstl</module>
-    <module>tutorial-jsf-samples</module>
-    <module>security</module>
-  </modules>
+        <module>jsp</module>
+        <module>jstl</module>
+        <module>tutorial-jpa-samples</module>
+        <module>tutorial-jsf-samples</module>
+        <module>security</module>
+    </modules>
 
 </project>
