@@ -62,6 +62,8 @@
         <module>tutorial-servlet</module> 
     <module>jsp</module>
     <module>jstl</module>
+    <module>tutorial-jsf-samples</module>
+    <module>security</module>
   </modules>
 
 </project>
