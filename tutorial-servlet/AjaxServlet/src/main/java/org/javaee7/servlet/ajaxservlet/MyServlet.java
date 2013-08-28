@@ -1,4 +1,9 @@
-package org.javaee7.servlet.mood;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.javaee7.servlet.ajaxservlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Masudul Haque
  */
-@WebServlet(name = "MoodServlet", urlPatterns = {"/MoodServlet"})
-public class MoodServlet extends HttpServlet {
+@WebServlet(name = "MyServlet", urlPatterns = {"/myservlet"})
+public class MyServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -28,36 +33,7 @@ public class MoodServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            out.println("<html lang=\"en\">");
-            out.println("<head>");
-            out.println("<title>Servlet MoodServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MoodServlet at "
-                    + request.getContextPath() + "</h1>");
-            String mood = (String) request.getAttribute("mood");
-            out.println("<p>Duke's mood is: " + mood + "</p>");
-            if (mood.equals("sleepy")) {
-                out.println("<img src=\"resources/images/duke.snooze.gif\" alt=\"Duke sleeping\"/><br/>");
-            } else if (mood.equals("alert")) {
-                out.println("<img src=\"resources/images/duke.waving.gif\" alt=\"Duke waving\"/><br/>");
-            } else if (mood.equals("hungry")) {
-                out.println("<img src=\"resources/images/duke.cookies.gif\" alt=\"Duke with cookies\"/><br/>");
-            } else if (mood.equals("lethargic")) {
-                out.println("<img src=\"resources/images/duke.handsOnHips.gif\" alt=\"Duke with hands on hips\"/><br/>");
-            } else if (mood.equals("thoughtful")) {
-                out.println("<img src=\"resources/images/duke.pensive.gif\" alt=\"Duke thinking\"/><br/>");
-            } else {
-                out.println("<img src=\"resources/images/duke.thumbsup.gif\" alt=\"Duke with thumbs-up gesture\"/><br/>");
-            }
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
-        }
-       
+        response.getWriter().write("Success Data");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
