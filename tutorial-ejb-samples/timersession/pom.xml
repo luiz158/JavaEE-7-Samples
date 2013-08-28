@@ -5,18 +5,10 @@
     <groupId>org.glassfish.javaeetutorial</groupId>
     <artifactId>timersession</artifactId>
     <packaging>war</packaging>
-    <name>${project.artifactId}</name>
-
-    <parent>
-        <artifactId>ejb</artifactId>
-        <groupId>org.glassfish.javaeetutorial</groupId>
-        <version>7.0.1</version>
-    </parent>
     
-    <build>
-        <finalName>${project.artifactId}</finalName>
-    </build>
-    <properties>
-        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
-     </properties>
+    <parent>
+        <artifactId>tutorial-ejb-samples</artifactId>
+        <groupId>org.javaee7</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 </project>
