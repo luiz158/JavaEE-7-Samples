@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns = "http://java.sun.com/xml/ns/javaee" 
+         version = "3.1"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation = "http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd">
+
+    <enterprise-beans>
+        <session>
+            <ejb-name>StatelessSessionBean</ejb-name>
+            <ejb-class>org.javaee7.psvideo.sessions.StatelessSessionBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            <persistence-unit-ref>
+                <persistence-unit-name>samplePU</persistence-unit-name>
+            </persistence-unit-ref>
+        </session>
+    </enterprise-beans>
+</ejb-jar>

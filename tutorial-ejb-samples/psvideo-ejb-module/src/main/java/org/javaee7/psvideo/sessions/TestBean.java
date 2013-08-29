@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.javaee7.psvideo.sessions; 
 
 import java.util.List;
@@ -14,10 +9,6 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 import org.javaee7.psvideo.entities.Student;
 
-/**
- *
- * @author Masudul Haque
- */
 @Singleton
 @DependsOn("CountryCodeEJB")
 @Startup
