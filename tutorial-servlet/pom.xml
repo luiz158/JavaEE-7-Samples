@@ -31,6 +31,7 @@
         <module>non-blocking-io-write-war</module>
         <module>http-upgrade-war</module>
     <module>AjaxServlet</module>
+    <module>AffavbleBean</module>
   </modules>
 
 </project>
