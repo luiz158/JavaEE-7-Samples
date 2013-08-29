@@ -66,6 +66,7 @@
         <module>tutorial-jsf-samples</module>
         <module>security</module>
     <module>tutorial-ejb-samples</module>
+    <module>tutorial-jaxrs-sample</module>
   </modules>
 
 </project>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="js/jquery/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#get").click(function() {
+                    $.ajax({
+                        type: 'GET',
+                        url: "webresources/contactus/count",
+                        success: function(data, textStatus, jqXHR) {
+                         alert(data);
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div>GET Example</div>
+        <div>
+            <input type="button" id="get" name="get" value="Get Count" />
+        </div>
+    </body>
+</html>
