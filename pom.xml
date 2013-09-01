@@ -67,6 +67,7 @@
         <module>security</module>
     <module>tutorial-ejb-samples</module>
     <module>tutorial-jaxrs-sample</module>
+    <module>tutorial-cdi-sample</module>
   </modules>
 
 </project>

@@ -1,11 +1,13 @@
 package org.javaee7.cdi.vetoed;
 
+import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Vetoed;
 
 /**
  * @author Arun Gupta
  */
-@Vetoed
+//@Vetoed
+@Default
 public class SimpleGreeting implements Greeting {
 
     @Override

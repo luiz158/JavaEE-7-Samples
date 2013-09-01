@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/TestServlet"})
 public class TestServlet extends HttpServlet {
     
-    @Inject Greeting greeting;
+    @Inject
+//    @Fancy
+    Greeting greeting;
 
     /**
      * Processes requests for both HTTP
