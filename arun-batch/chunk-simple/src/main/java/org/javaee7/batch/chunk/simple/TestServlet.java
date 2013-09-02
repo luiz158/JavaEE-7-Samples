@@ -47,7 +47,7 @@ public class TestServlet extends HttpServlet {
             out.println("Got the job operator: " + jo + "<br>");
             long jid = jo.start("myJob2", new Properties());
             out.println("Job submitted: " + jid + "<br>");
-            out.println(jo.getJobInstanceCount("myJob") + " job instance found<br/>");
+            out.println(jo.getJobInstanceCount("myJob2") + " job instance found<br/>");
             JobExecution je = jo.getJobExecution(jid);
 //            jo.abandon(jid);
             out.println("Job created on: " + je.getCreateTime() + "<br>");
