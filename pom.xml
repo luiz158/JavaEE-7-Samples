@@ -56,8 +56,7 @@
         <module>arun-jta</module>
         <module>arun-jsf</module>
         <module>arun-json</module>
-        <module>arun-servlet</module> 
-        <module>arun-validation</module>
+        <module>arun-servlet</module>
         <module>arun-websocket</module> 
         <module>tutorial-servlet</module> 
         <module>jsp</module>
@@ -68,6 +67,7 @@
     <module>tutorial-ejb-samples</module>
     <module>tutorial-jaxrs-sample</module>
     <module>tutorial-cdi-sample</module>
+    <module>BV</module>
   </modules>
 
 </project>

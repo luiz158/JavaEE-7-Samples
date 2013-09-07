@@ -6,6 +6,7 @@
 package org.javaee7.interceptor;
 
 import javax.ejb.Stateless;
+import javax.interceptor.ExcludeClassInterceptors;
 
 /**
  *
@@ -15,7 +16,17 @@ import javax.ejb.Stateless;
 @Logged
 public class LoginSession {
     
+    public LoginSession() {
+        System.out.println("Try to Construct.");
+    }
+     
+    
     public void tryLogin(){
         System.out.println("Try to login");
+//        tryRegister();
+    }
+//    @ExcludeClassInterceptors
+    public void tryRegister(){
+        System.out.println("Try to Register");
     }
 }
