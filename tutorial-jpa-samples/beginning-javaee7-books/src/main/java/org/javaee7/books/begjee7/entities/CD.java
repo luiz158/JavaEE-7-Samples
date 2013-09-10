@@ -7,6 +7,7 @@ package org.javaee7.books.begjee7.entities;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyColumn;
 
 /**
@@ -22,7 +24,8 @@ import javax.persistence.MapKeyColumn;
  * @author Masud
  */
 @Entity
-public class CD implements Serializable{
+public class CD implements Serializable {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -36,6 +39,9 @@ public class CD implements Serializable{
     @MapKeyColumn(name = "position")
     @Column(name = "title")
     private Map<Integer, String> tracks = new HashMap<>();
+
+    @ManyToMany(mappedBy = "appearsOnCDs")
+    private List<Artist> createdByArtists;
 
     public Long getId() {
         return id;
@@ -84,6 +90,15 @@ public class CD implements Serializable{
     public void setTracks(Map<Integer, String> tracks) {
         this.tracks = tracks;
     }
+
+    public List<Artist> getCreatedByArtists() {
+        return createdByArtists;
+    }
+
+    public void setCreatedByArtists(List<Artist> createdByArtists) {
+        this.createdByArtists = createdByArtists;
+    }
     
     
+
 }

@@ -11,34 +11,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SecondaryTable;
 import javax.persistence.SecondaryTables;
+import javax.persistence.Table;
 
 /**
  *
  * @author Masud
  */
 @Entity
-@SecondaryTables({
-    @SecondaryTable(name = "city"),
-    @SecondaryTable(name = "country")
-})
-public class Address implements Serializable{
+@Table(name = "t_address")
+//@SecondaryTables({
+//    @SecondaryTable(name = "city"),
+//    @SecondaryTable(name = "country")
+//})
+public class Address implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String street1;
     private String street2;
-    @Column(table = "city")
+//    @Column(table = "city")
     private String city;
-    @Column(table = "city")
+//    @Column(table = "city")
     private String state;
-    @Column(table = "city")
+//    @Column(table = "city")
     private String zipcode;
-    @Column(table = "country")
+//    @Column(table = "country")
     private String country;
-
+    @OneToOne(mappedBy = "address")
+    private Member member;
     // Constructors, getters, setters
+
     public Long getId() {
         return id;
     }
@@ -93,6 +100,14 @@ public class Address implements Serializable{
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 
 }

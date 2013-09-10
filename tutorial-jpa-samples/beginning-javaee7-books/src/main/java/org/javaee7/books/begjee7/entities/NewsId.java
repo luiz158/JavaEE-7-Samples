@@ -12,7 +12,7 @@ import javax.persistence.Embeddable;
  *
  * @author Masud
  */
-@Embeddable
+//@Embeddable
 public class NewsId implements Serializable {
  
   private String title;
@@ -33,6 +33,16 @@ public class NewsId implements Serializable {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode(); //To change body of generated methods, choose Tools | Templates.
     }
   
 }
