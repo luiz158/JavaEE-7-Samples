@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Boolean Checkbox"/>
+                <h:selectBooleanCheckbox value="#{studentBean.agree}"/>
+<!--                <h:outputLabel value="Manay Checkbox"/>
+                <h:selectManyCheckbox value="#{studentBean.subjectRes}">
+                    <f:selectItems value="#{studentBean.subjectList}"/>
+                    <f:selectItem itemLabel="Bangla" itemValue="Bangla"/>
+                    <f:selectItem itemLabel="English" itemValue="English"/>
+                </h:selectManyCheckbox>-->
+<!--                <h:outputLabel value="Manay Menu"/>
+                <h:selectManyMenu label="Select" value="#{studentBean.subjectRes}">
+                    <f:selectItems value="#{studentBean.subjectList}"/>
+                    <f:selectItem itemLabel="Bangla" itemValue="Bangla"/>
+                    <f:selectItem itemLabel="English" itemValue="English"/>
+                </h:selectManyMenu>-->
+                <h:outputLabel value="One List Box"/>
+                <h:selectOneListbox label="Select" value="#{studentBean.sub}">
+                    <f:selectItems value="#{studentBean.subjectList}"/>
+                    <f:selectItem itemLabel="Bangla" itemValue="Bangla"/>
+                    <f:selectItem itemLabel="English" itemValue="English"/>
+                </h:selectOneListbox>
+<!--                <h:outputLabel value="Manay List Box"/>
+                <h:selectManyListbox label="Select" value="#{studentBean.subjectRes}">
+                    <f:selectItems value="#{studentBean.subjectList}"/>
+                </h:selectManyListbox>-->
+                <h:commandButton action="#{studentBean.submit}" value="Submit"/>
+            </h:panelGrid>
+            <h:outputText value="#{studentBean.agree}"/>
+        </h:form>
+    </h:body>
+</html>
+
