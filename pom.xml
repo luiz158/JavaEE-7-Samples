@@ -68,6 +68,7 @@
     <module>tutorial-jaxrs-sample</module>
     <module>tutorial-cdi-sample</module>
     <module>BV</module>
+    <module>tutorial-primefaces-sample</module>
   </modules>
 
 </project>
