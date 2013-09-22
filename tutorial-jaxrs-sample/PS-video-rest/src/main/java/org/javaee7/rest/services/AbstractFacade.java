@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+
+package org.javaee7.rest.services;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
  *
- * @author Masud
+ * @author Masudul Haque
  */
 public abstract class AbstractFacade<T> {
     private Class<T> entityClass;
@@ -47,7 +48,7 @@ public abstract class AbstractFacade<T> {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
-        q.setMaxResults(range[1] - range[0]);
+        q.setMaxResults(range[1] - range[0] + 1);
         q.setFirstResult(range[0]);
         return q.getResultList();
     }

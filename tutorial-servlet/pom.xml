@@ -32,6 +32,7 @@
         <module>http-upgrade-war</module>
     <module>AjaxServlet</module>
     <module>AffavbleBean</module>
+    <module>cookies</module>
   </modules>
 
 </project>

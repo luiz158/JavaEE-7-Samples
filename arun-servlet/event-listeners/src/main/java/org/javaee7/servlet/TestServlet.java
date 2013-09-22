@@ -1,4 +1,4 @@
-package org.javaee7.jaxrs.client;
+package org.javaee7.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,17 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedHashMap;
 
 /**
  * @author Arun Gupta
  */
-@WebServlet(urlPatterns = {"/TestServlet"})
+@WebServlet(urlPatterns = "/TestServlet")
 public class TestServlet extends HttpServlet {
 
     /**
@@ -33,51 +27,36 @@ public class TestServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>JAX-RS 2 Client API</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>JAX-RS 2 Client API at " + request.getContextPath() + "</h1>");
-        out.println("Initializing client...<br>");
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("http://"
-                + request.getServerName()
-                + ":"
-                + request.getServerPort()
-                + request.getContextPath()
-                + "/webresources/persons");
-
-        out.print("POSTing...<br>");
-        // POST
-        MultivaluedHashMap<String, String> map = new MultivaluedHashMap<>();
-        map.add("name", "Name");
-        map.add("age", "17");
-        target.request().post(Entity.form(map));
-        out.print("POSTed a new item ...<br>");
-
-        // GET
-        out.print("GETTing...<br>");
-        Person[] list = target.request().get(Person[].class);
-        out.format("GOT %1$s items<br>", list.length);
-        for (Person p : list) {
-            out.print(p + "<br>");
+        try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Event Listeners</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Event Listeners</h1>");
+            out.println("<h2>Setting, updating, and removing ServletContext Attributes</h2>");
+            request.getServletContext().setAttribute("attribute1", "attribute-value1");
+            request.getServletContext().setAttribute("attribute1", "attribute-updated-value1");
+            request.getServletContext().removeAttribute("attribute1");
+            out.println("done");
+            out.println("<h2>Setting, updating, and removing HttpSession Attributes</h2>");
+            request.getSession(true).setAttribute("attribute1", "attribute-value1");
+            request.getSession().setAttribute("attribute1", "attribute-updated-value1");
+            request.getSession().removeAttribute("attribute1");
+            out.println("done");
+            out.println("<h2>Setting, updating, and removing ServletRequest Attributes</h2>");
+            request.setAttribute("attribute1", "attribute-value1");
+            request.setAttribute("attribute1", "attribute-updated-value1");
+            request.removeAttribute("attribute1");
+            out.println("done");
+            out.println("<h2>Invalidating session</h2>");
+            request.getSession().invalidate();
+            out.println("done");
+            out.println("Check output in server.log");
+            out.println("</body>");
+            out.println("</html>");
         }
-        out.println("... done.<br>");
-
-        // GET with path param
-        out.print("GETTing with parameter...<br>");
-        Person person = target
-                .path("{id}")
-                .resolveTemplate("id", "1")
-                .request(MediaType.APPLICATION_XML)
-                .get(Person.class);
-        out.print("GOT person: " + person + "<br>");
-        out.println("... done.");
-        
-        out.println("</body>");
-        out.println("</html>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

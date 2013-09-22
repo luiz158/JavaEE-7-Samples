@@ -17,8 +17,8 @@ import javax.ws.rs.core.MultivaluedHashMap;
 /**
  * @author Arun Gupta
  */
-@WebServlet(urlPatterns = {"/TestServlet"})
-public class TestServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/TestJAXRS2Client"})
+public class TestJAXRS2Client extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -39,7 +39,7 @@ public class TestServlet extends HttpServlet {
         out.println("<title>JAX-RS 2 Client API</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>JAX-RS 2 Client API at " + request.getContextPath() + "</h1>");
+        out.println("<h1>JAX-RS 2 Client API</h1>");
         out.println("Initializing client...<br>");
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://"
@@ -49,7 +49,7 @@ public class TestServlet extends HttpServlet {
                 + request.getContextPath()
                 + "/webresources/persons");
 
-        out.print("POSTing...<br>");
+        out.print("<br>POSTing...<br>");
         // POST
         MultivaluedHashMap<String, String> map = new MultivaluedHashMap<>();
         map.add("name", "Name");
@@ -58,7 +58,7 @@ public class TestServlet extends HttpServlet {
         out.print("POSTed a new item ...<br>");
 
         // GET
-        out.print("GETTing...<br>");
+        out.print("<br>GETTing...<br>");
         Person[] list = target.request().get(Person[].class);
         out.format("GOT %1$s items<br>", list.length);
         for (Person p : list) {
@@ -67,13 +67,19 @@ public class TestServlet extends HttpServlet {
         out.println("... done.<br>");
 
         // GET with path param
-        out.print("GETTing with parameter...<br>");
+        out.print("<br>GETTing with parameter...<br>");
         Person person = target
                 .path("{id}")
                 .resolveTemplate("id", "1")
                 .request(MediaType.APPLICATION_XML)
                 .get(Person.class);
         out.print("GOT person: " + person + "<br>");
+        out.println("... done.<br>");
+        
+        // Client-driven content negotiation
+        out.print("<br>Client-side content negotiation...<br>");
+        String json = target.request().accept(MediaType.APPLICATION_JSON).get(String.class);
+        out.print("GOT JSON: " + json + "<br>");
         out.println("... done.");
         
         out.println("</body>");
