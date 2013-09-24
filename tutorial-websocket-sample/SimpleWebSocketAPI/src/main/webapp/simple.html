@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="js/jquery/jquery.min.js"></script>
+        <script>
+            $(document).ready(function (){
+                var ws=new WebSocket("ws://localhost:8080/SimpleWebSocketAPI/otherendpoint");
+                
+                ws.onopen=function (e){
+                    $("#display").append("<p>Connection is Open</p>");
+                }
+                
+                ws.onclose=function (e){
+                    $("#display").append("<p>Connection is Closed</p>");
+                }
+                
+                ws.onerror=function (e){
+                    $("#display").append("<p>Error</p>");
+                }
+                
+                ws.onmessage=function (e){
+                   $("#display").append("<p>"+e.data+"</p>");
+//                    ws.send($("#message").val());
+                }
+                $("#send").click(function (e){
+                    var msg=$("#message").val();
+                    $("#display").append("<p>From Client : "+msg+"</p>");
+                    ws.send(msg);
+                   return false; 
+                });
+                $("#open").click(function (){
+                    ws.open();
+                });
+                $("#close").click(function (){
+                    ws.close();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div>Simple Example</div>
+        <div>
+            <form>
+               Message To Send: <input type="text" id="message"/><br/>
+               <input type="button" id="open" value="Open"/>
+                <input type="submit" id="send" value="Send"/>
+                <input type="button" id="close" value="Close"/>
+            </form>
+        </div>
+        <div id="display">
+            
+        </div>
+    </body>
+</html>

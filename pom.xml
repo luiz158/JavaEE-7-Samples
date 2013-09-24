@@ -69,6 +69,7 @@
     <module>tutorial-cdi-sample</module>
     <module>BV</module>
     <module>tutorial-primefaces-sample</module>
+    <module>tutorial-websocket-sample</module>
   </modules>
 
 </project>
