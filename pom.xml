@@ -45,11 +45,11 @@
 
     <modules>
         <module>arun-batch</module>
-        <module>arun-concurrency</module>
+        <module>concurrency</module>
         <module>arun-cdi</module>
         <module>arun-ejb</module>
         <module>arun-el</module>        
-        <module>arun-javamail</module>
+        <module>javamail</module>
         <module>arun-jaxrs</module>
         <module>arun-jms</module>
         <module>arun-jpa</module>
@@ -70,6 +70,7 @@
     <module>BV</module>
     <module>tutorial-primefaces-sample</module>
     <module>tutorial-websocket-sample</module>
+    <module>json-tutorial-sample</module>
   </modules>
 
 </project>

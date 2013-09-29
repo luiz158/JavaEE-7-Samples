@@ -1,12 +1,13 @@
-package org.javaee7.json.object.reader;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.javaee7.servlet.cookies;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.servlet.ServletContext;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,15 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author Arun Gupta
+ *
+ * @author Masudul Haque
  */
-@WebServlet(urlPatterns = {"/JsonReaderFromStream"})
-public class JsonReaderFromStream extends HttpServlet {
+@WebServlet(name = "AmpParam", urlPatterns = {"/AmpParam"})
+public class AmpParam extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -32,36 +33,23 @@ public class JsonReaderFromStream extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+         String summary="";
+        Enumeration<String> paramNames = request.getParameterNames();
+        while (paramNames.hasMoreElements()) {
+            String paramName = paramNames.nextElement();
+            if (paramName.equals("summary")) {
+                summary = request.getParameter(paramName).toString();
+            }
+        }
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TestJsonReaderFromStream</title>");            
+            out.println("<title>Servlet AmpParam</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Reading JSON from a stream packaged with the application</h1>");
-            
-            ServletContext servletContext = request.getServletContext();
-            out.println("Reading an empty object<br>");
-            JsonReader jsonReader = Json.createReader(servletContext.getResourceAsStream("/1.json"));
-            JsonObject json = jsonReader.readObject();
-            out.println(json);
-
-            out.println("<br><br>Reading an object with two elements<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/2.json"));
-            json = jsonReader.readObject();
-            out.println(json);
-
-            out.println("<br><br>Reading an array with two objects<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/3.json"));
-            JsonArray jsonArr = jsonReader.readArray();
-            out.println(jsonArr);
-
-            out.println("<br><br>Reading a nested structure<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/4.json"));
-            json = jsonReader.readObject();
-            out.println(json);
-            
+            out.println("<h1>Servlet AmpParam at " + summary+ "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -69,8 +57,7 @@ public class JsonReaderFromStream extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -84,8 +71,7 @@ public class JsonReaderFromStream extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -107,4 +93,5 @@ public class JsonReaderFromStream extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

@@ -1,12 +1,10 @@
-package org.javaee7.json.object.reader;
+package org.javaee7.concurrency.executor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.servlet.ServletContext;
+import java.util.concurrent.Future;
+import javax.annotation.Resource;
+import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author Arun Gupta
  */
-@WebServlet(urlPatterns = {"/JsonReaderFromStream"})
-public class JsonReaderFromStream extends HttpServlet {
+@WebServlet(urlPatterns = {"/TestResourceServlet"})
+public class TestResourceServlet extends HttpServlet {
+
+//    @Resource(name = "concurrent/myExecutor2")
+//    @Resource(name = "DefaultManagedExecutorService")
+    @Resource(name = "java:comp/DefaultManagedExecutorService")
+    ManagedExecutorService executor;
+    
 
     /**
      * Processes requests for both HTTP
@@ -33,35 +37,24 @@ public class JsonReaderFromStream extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TestJsonReaderFromStream</title>");            
+            out.println("<title>Servlet TestServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Reading JSON from a stream packaged with the application</h1>");
-            
-            ServletContext servletContext = request.getServletContext();
-            out.println("Reading an empty object<br>");
-            JsonReader jsonReader = Json.createReader(servletContext.getResourceAsStream("/1.json"));
-            JsonObject json = jsonReader.readObject();
-            out.println(json);
+            out.println("<h1>Servlet TestServlet at " + request.getContextPath() + "</h1>");
 
-            out.println("<br><br>Reading an object with two elements<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/2.json"));
-            json = jsonReader.readObject();
-            out.println(json);
-
-            out.println("<br><br>Reading an array with two objects<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/3.json"));
-            JsonArray jsonArr = jsonReader.readArray();
-            out.println(jsonArr);
-
-            out.println("<br><br>Reading a nested structure<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/4.json"));
-            json = jsonReader.readObject();
-            out.println(json);
-            
+            System.out.println("Getting ManagedExecutorService using @Resource");
+            for (int i = 0; i < 5; i++) {
+                out.format("submitting runnable(%d)<br>", i);
+                Future<?> f = executor.submit(new MyRunnableTask(i));
+                out.format("executing runnable(%d)<br>", i);
+                executor.execute(new MyRunnableTask(i));
+                out.format("submitting callable(%d)<br>", i);
+                Future<Product> f2 = executor.submit(new MyCallableTask(i));
+            }
+            out.println("all tasks submitted<br/><br/>");
+            out.println("Check server.log for output from the task.");
             out.println("</body>");
             out.println("</html>");
         }
@@ -107,4 +100,5 @@ public class JsonReaderFromStream extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

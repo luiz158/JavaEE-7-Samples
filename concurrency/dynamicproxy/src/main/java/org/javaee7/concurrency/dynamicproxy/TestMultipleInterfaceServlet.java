@@ -1,12 +1,13 @@
-package org.javaee7.json.object.reader;
+package org.javaee7.concurrency.dynamicproxy;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.servlet.ServletContext;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import javax.annotation.Resource;
+import javax.enterprise.concurrent.ContextService;
+import javax.enterprise.concurrent.ManagedThreadFactory;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author Arun Gupta
  */
-@WebServlet(urlPatterns = {"/JsonReaderFromStream"})
-public class JsonReaderFromStream extends HttpServlet {
+@WebServlet(urlPatterns = {"/TestMultipleInterfaceServlet"})
+public class TestMultipleInterfaceServlet extends HttpServlet {
+
+    @Resource(name = "java:comp/DefaultManagedThreadFactory")
+    ManagedThreadFactory factory;
+    
+    @Resource(name = "java:comp/DefaultContextService")
+    ContextService service;
+    
 
     /**
      * Processes requests for both HTTP
@@ -33,35 +41,23 @@ public class JsonReaderFromStream extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TestJsonReaderFromStream</title>");            
+            out.println("<title>Servlet TestServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Reading JSON from a stream packaged with the application</h1>");
-            
-            ServletContext servletContext = request.getServletContext();
-            out.println("Reading an empty object<br>");
-            JsonReader jsonReader = Json.createReader(servletContext.getResourceAsStream("/1.json"));
-            JsonObject json = jsonReader.readObject();
-            out.println(json);
+            out.println("<h1>Servlet TestServlet at " + request.getContextPath() + "</h1>");
 
-            out.println("<br><br>Reading an object with two elements<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/2.json"));
-            json = jsonReader.readObject();
-            out.println(json);
-
-            out.println("<br><br>Reading an array with two objects<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/3.json"));
-            JsonArray jsonArr = jsonReader.readArray();
-            out.println(jsonArr);
-
-            out.println("<br><br>Reading a nested structure<br>");
-            jsonReader = Json.createReader(servletContext.getResourceAsStream("/4.json"));
-            json = jsonReader.readObject();
-            out.println(json);
-            
+            out.println("Creating contextual proxy<br>");
+            Object proxy = service.createContextualProxy(new MyRunnableWork(), Runnable.class, MyWork.class);
+            out.println("Calling MyWork interface<br>");
+            ((MyWork)proxy).myWork();
+            out.println("Creating Java SE style ExecutorService<br>");
+            ExecutorService executor = Executors.newFixedThreadPool(10, factory);
+            out.println("Submitting the task<br>");
+            Future f = executor.submit((Runnable)proxy);
+            out.println("done<br><br>");
+            out.println("Check server.log for output from the task.");
             out.println("</body>");
             out.println("</html>");
         }
@@ -107,4 +103,5 @@ public class JsonReaderFromStream extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
