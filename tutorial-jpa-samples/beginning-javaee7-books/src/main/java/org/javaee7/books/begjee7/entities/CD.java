@@ -35,10 +35,10 @@ public class CD implements Serializable {
     @Lob
     private byte[] cover;
     @ElementCollection
-    @CollectionTable(name = "cd_track")
-    @MapKeyColumn(name = "position")
+    @CollectionTable(name = "credit_card")
+    @MapKeyColumn(name = "card")
     @Column(name = "title")
-    private Map<Integer, String> tracks = new HashMap<>();
+    private Map<CreditCardType, Boolean> tracks = new HashMap<>();
 
     @ManyToMany(mappedBy = "appearsOnCDs")
     private List<Artist> createdByArtists;
@@ -83,13 +83,17 @@ public class CD implements Serializable {
         this.cover = cover;
     }
 
-    public Map<Integer, String> getTracks() {
+    public Map<CreditCardType, Boolean> getTracks() {
         return tracks;
     }
 
-    public void setTracks(Map<Integer, String> tracks) {
+    public void setTracks(Map<CreditCardType, Boolean> tracks) {
         this.tracks = tracks;
     }
+
+ 
+
+ 
 
     public List<Artist> getCreatedByArtists() {
         return createdByArtists;

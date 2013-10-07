@@ -14,8 +14,8 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class Hello {
-
-    private String name;
+   
+    private String name="café";
 
     public Hello() {
     }

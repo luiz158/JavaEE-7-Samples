@@ -20,6 +20,8 @@ public class DSTest {
         EntityManagerFactory emf=Persistence.createEntityManagerFactory("beginning-javaee7-booksPU");
         EntityManager em=emf.createEntityManager();
         Query q= em.createNativeQuery("select * from usertable");
+//        q.setFirstResult(i)
+//        q.setMaxResults(i)
         List<Object[]> list=q.getResultList();
         for(Object[] obj:list){
 //            String[] res=(String[]) obj;

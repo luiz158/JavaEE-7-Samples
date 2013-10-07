@@ -33,6 +33,7 @@
     <module>AjaxServlet</module>
     <module>AffavbleBean</module>
     <module>cookies</module>
+    <module>hello-world</module>
   </modules>
 
 </project>
