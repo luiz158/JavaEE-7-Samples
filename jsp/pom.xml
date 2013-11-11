@@ -13,5 +13,6 @@
   <name>jsp</name>
   <modules>
     <module>netbeans-jsp-samples</module>
+    <module>JSPTemplate</module>
   </modules>
 </project>

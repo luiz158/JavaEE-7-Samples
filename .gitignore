@@ -17,3 +17,5 @@ WebContent
 *dummy*.*
 .svn
 
+/tutorial-websocket-sample/timer/nbproject/private/
+/tutorial-websocket-sample/timer/build/

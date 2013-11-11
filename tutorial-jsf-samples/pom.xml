@@ -22,6 +22,7 @@
         <module>hello1</module>
         <module>hello1-rlc</module>
         <module>reservation</module>
-    </modules>
+    <module>CRUDExam</module>
+  </modules>
   
 </project>

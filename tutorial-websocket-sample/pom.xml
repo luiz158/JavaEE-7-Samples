@@ -14,5 +14,6 @@
   <modules>
     <module>SimpleWebSocketAPI</module>
     <module>DesktopClient</module>
+    <module>chess</module>
   </modules>
 </project>
