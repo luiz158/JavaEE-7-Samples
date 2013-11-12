@@ -1,0 +1,1 @@
+CREATE TABLE CHUNK_CSV_DATABASE ("ID" INTEGER not null primary key, "NAME" VARCHAR(50) not null primary key, "HIREDATE" VARCHAR(50) not null)

@@ -28,6 +28,7 @@
         <module>multiple-steps</module>
         <module>split</module>
         <module>chunk-simple-nobeans</module>
-    </modules>
+    <module>chunk-csv-database</module>
+  </modules>
 
 </project>
