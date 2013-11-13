@@ -18,6 +18,7 @@ import org.javaee7.crudexam.web.util.JDBCConnection;
 @Named
 @RequestScoped
 public class ContextController {
+    private String formId="formId";
     private ResultSet resultSet;
     public void load() {
         Connection con=JDBCConnection.getConnection();
@@ -44,6 +45,14 @@ public class ContextController {
 
     public void setResultSet(ResultSet resultSet) {
         this.resultSet = resultSet;
+    }
+
+    public String getFormId() {
+        return formId;
+    }
+
+    public void setFormId(String formId) {
+        this.formId = formId;
     }
     
     
