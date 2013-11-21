@@ -7,7 +7,8 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form id="#{contextController.formId}">
+        <!--<h:form id="#{contextController.formId}">-->
+            <h:commandButton action="#{contextController.delete()}" value="Delete"/>
             <h:commandButton action="#{contextController.test()}" value="Test"/>
             <h:commandButton action="#{contextController.load()}" value="Load"/>
             <h:dataTable value="#{contextController.resultSet}" var="res">
@@ -20,7 +21,7 @@
                     #{res.description}
                 </h:column>
             </h:dataTable>
-        </h:form>
+        <!--</h:form>-->
     </h:body>
 </html>
 

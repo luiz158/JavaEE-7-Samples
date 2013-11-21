@@ -38,7 +38,9 @@ public class ContextController {
                 getValue(facesContext.getELContext(), controller,"name");
         System.out.println("Controller Bean : " + name);
     }
-
+     public void delete() {
+         System.out.println("Delete is called");
+     }
     public ResultSet getResultSet() {
         return resultSet;
     }

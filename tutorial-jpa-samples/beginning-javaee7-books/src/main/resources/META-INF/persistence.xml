@@ -24,6 +24,7 @@
     <class>org.javaee7.books.begjee7.entities.InDoctor</class>
     <class>org.javaee7.books.begjee7.entities.User</class>
     <class>org.javaee7.books.begjee7.entities.Role</class>
+    <class>org.javaee7.books.begjee7.entities.Person</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sample"/>
       <property name="javax.persistence.jdbc.password" value=""/>
