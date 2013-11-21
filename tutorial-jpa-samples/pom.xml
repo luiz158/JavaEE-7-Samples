@@ -13,5 +13,6 @@
   <name>tutorial-jpa-samples</name>
   <modules>
     <module>beginning-javaee7-books</module>
+    <module>SO</module>
   </modules>
 </project>
