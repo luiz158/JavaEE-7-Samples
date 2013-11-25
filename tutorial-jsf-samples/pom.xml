@@ -24,6 +24,7 @@
         <module>reservation</module>
     <module>CRUDExam</module>
     <module>Operation</module>
+    <module>custom-components</module>
   </modules>
   
 </project>
