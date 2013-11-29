@@ -1,9 +1,11 @@
 package org.javaee7.so;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import org.javaee7.so.model.Customer;
 
 /**
  * Hello world!
@@ -13,20 +15,18 @@ public class App
 {
     public static void main( String[] args )
     {
-//        EntityManagerFactory emf=Persistence.createEntityManagerFactory("samplePU");
-//        EntityManager em=emf.createEntityManager();
-//        String query="select count(cust) from Customer cust";
-//        Query q=em.createQuery(query);
-//        Long countObj=(Long) q.getSingleResult();
-//        System.out.println(countObj);
-        try {
-            int a=4/0;
-        } catch (Exception e) {
-//            e.printStackTrace();
-            System.out.println(e.toString());
+        EntityManagerFactory emf=Persistence.createEntityManagerFactory("samplePU");
+        EntityManager em=emf.createEntityManager();
+        String query="select cust from Customer cust";
+        em.getTransaction().begin();
+        Query q=em.createQuery(query);
+        List<Customer> list= q.getResultList();
+        em.close();
+        em.getTransaction().commit();
+        for (Customer customer : list) {
+            System.out.println(customer.getName());
         }
-        catch(Error e){
-            e.printStackTrace();
-        }
+        
+      
     }
 }

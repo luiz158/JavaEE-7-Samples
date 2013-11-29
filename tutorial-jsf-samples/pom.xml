@@ -25,6 +25,8 @@
     <module>CRUDExam</module>
     <module>Operation</module>
     <module>custom-components</module>
+    <module>SEODupContent</module>
+    <module>hol</module>
   </modules>
   
 </project>
