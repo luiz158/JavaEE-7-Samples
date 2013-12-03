@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="js/libs/jquery/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#button').click(function() {
+                    $.get('JsonMapServlet', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+                        var $select = $('#someselect');                           // Locate HTML DOM element with ID "someselect".
+                        $select.find('option').remove();                          // Find all child elements with tag name "option" and remove them (just to prevent duplicate options when button is pressed again).
+                        $.each(responseJson, function(key, value) {               // Iterate over the JSON object.
+                            $('<option>').val(key).text(value).appendTo($select); // Create HTML <option> element, set its value with currently iterated key and its text content with currently iterated item and finally append it to the <select>.
+                        });
+                    });
+
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div><button id="button"/>Get</div>
+        <div>
+            <select id="someselect"></select>
+        </div>
+    </body>
+</html>

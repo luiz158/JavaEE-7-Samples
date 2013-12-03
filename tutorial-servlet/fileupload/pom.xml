@@ -8,7 +8,7 @@
     </parent>
 
     <groupId>org.javaee7.servlet</groupId>
-    <artifactId>tutorial-fileupload</artifactId>
+    <artifactId>fileupload</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <properties>
@@ -17,6 +17,11 @@
     </properties>
     
     <dependencies>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -74,5 +79,5 @@
             </plugin>
         </plugins>
     </build>
-
+    <name>fileupload</name>
 </project>

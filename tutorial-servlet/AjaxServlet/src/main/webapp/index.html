@@ -3,32 +3,14 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <script src="js/libs/jquery/jquery.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#get").click(function() {
-                    $.ajax({
-                        type: 'GET',
-                        url: "myservlet",
-                        data: {
-                            objects: '2',
-                            dimension: '2',
-                        },
-                        success: function(data) {
-                            console.log(data);
-                            alert(data);
-                        },
-                        error: function(data, status, er) {
-                            alert("error: " + data + " status: " + status + " er:" + er);
-                        }
-                    });
-                });
-            });
-
-        </script>
     </head>
     <body>
         <h1>Ajax</h1>
-        <input type="button" value="Get" id="get"/>
+        <ul>
+            <li><a href="PlainText.html">Plain Text</a></li>
+            <li><a href="JsonStringList.html">Json String List</a></li>
+            <li><a href="JsonObjectList.html">Json Object List</a></li>
+            <li><a href="JsonMap.html">Json Map</a></li>
+        </ul>
     </body>
 </html>

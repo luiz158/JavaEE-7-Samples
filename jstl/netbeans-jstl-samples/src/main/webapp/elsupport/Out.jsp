@@ -6,7 +6,6 @@
 <body bgcolor="#FFFFFF">
 
 <h3>&lt;c:out&gt;</h3>
-
 <table border="1">
   <c:forEach var="customer" items="${customers}">
     <tr>
