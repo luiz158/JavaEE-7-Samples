@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>org.javaee7.batch</groupId>
-    <artifactId>arun-batch-samples</artifactId>
+    <artifactId>batch-samples</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <!--<name>${project.artifactId}</name>-->
@@ -29,6 +29,7 @@
         <module>split</module>
         <module>chunk-simple-nobeans</module>
     <module>chunk-csv-database</module>
+    <module>my-chunk-sample</module>
   </modules>
-
+    <name>batch</name>
 </project>
