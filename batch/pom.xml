@@ -30,6 +30,7 @@
         <module>chunk-simple-nobeans</module>
     <module>chunk-csv-database</module>
     <module>my-chunk-sample</module>
+    <module>webserverlog</module>
   </modules>
     <name>batch</name>
 </project>

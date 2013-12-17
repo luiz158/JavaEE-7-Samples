@@ -1,10 +1,14 @@
 <job id="myJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
-    <step id="myStep" >
+    <step id="myStep" next="myBatch" >
         <chunk item-count="2">
             <reader ref="myReader2"></reader> 
             <processor ref="myItemProcessor"></processor>
             <writer ref="myItemWriter"></writer> 
         </chunk>	
+    </step>
+    <step id="myBatch">
+         <batchlet ref="myBatchlet"></batchlet>
+         <end on="COMPLETED"/>
     </step>
 </job> 
 

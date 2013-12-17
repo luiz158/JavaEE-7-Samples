@@ -18,7 +18,7 @@
         <module>annotation-war</module>  
         <module>netbeans-servlet-samples</module>
         <module>tutorial-dukeetf</module>
-        <module>tutorial-fileupload</module>
+        <module>fileupload</module>
         <module>tutotial-mood</module>      
         <module>async-request-war</module>
         <module>dynamic-registration-war</module>

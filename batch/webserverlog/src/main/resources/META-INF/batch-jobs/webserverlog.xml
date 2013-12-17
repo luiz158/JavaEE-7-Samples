@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="webserverlog" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+     version="1.0">
+    <listeners>
+        <listener ref="InfoJobListener"/>
+    </listeners>
+    <step id="mobileFilter" next="batchFilter">
+        <listeners>
+            <listener ref="LogItemProcessListener"/>
+            <listener ref="LogItemReadListener"/>
+        </listeners>
+        <chunk checkpoint-policy="item" item-count="5">
+            <reader ref="logItemReader"></reader>
+            <processor ref="logItemProcessor"></processor>
+            <writer ref="logItemWriter"></writer>
+        </chunk>
+    </step>
+    <step id="batchFilter">
+        <batchlet ref="logBatchlet"></batchlet>
+    </step>
+</job>

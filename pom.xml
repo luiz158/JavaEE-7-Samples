@@ -44,7 +44,7 @@
     </build>
 
     <modules>
-        <module>arun-batch</module>
+        <module>batch</module>
         <module>concurrency</module>
         <module>arun-cdi</module>
         <module>arun-ejb</module>
