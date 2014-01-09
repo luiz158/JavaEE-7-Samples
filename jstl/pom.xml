@@ -13,5 +13,6 @@
   <name>jstl</name>
   <modules>
     <module>netbeans-jstl-samples</module>
+    <module>tutorial</module>
   </modules>
 </project>
