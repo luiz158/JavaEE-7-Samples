@@ -3,10 +3,10 @@
   <persistence-unit name="pcstorePU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <!--<non-jta-data-source>mysql/pcstore</non-jta-data-source>-->
-    <jta-data-source>mysql/javaee</jta-data-source>
+    <jta-data-source>jdbc/sample</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

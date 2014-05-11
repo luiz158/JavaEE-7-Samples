@@ -9,8 +9,8 @@
             $(document).ready(function() {
                 $("#get").click(function() {
                     $.ajax({
-                        type: 'GET',
-                        url: "webresources/students/count",
+                        type: 'POST',
+                        url: "webresources/students",
                         success: function(data, textStatus, jqXHR) {
                          alert(data);
                         }
@@ -20,9 +20,12 @@
         </script>
     </head>
     <body>
-        <div>GET Example</div>
+        <div>Post Example</div>
         <div>
-            <input type="button" id="get" name="get" value="Get Count" />
+            <form action="webresources/students/create" method="POST">
+               Student Name: <input type="text" name="name"/><br/>
+                <input type="submit" value="Submit"/>
+            </form>
         </div>
     </body>
 </html>

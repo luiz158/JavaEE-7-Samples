@@ -10,7 +10,7 @@
                 $("#get").click(function() {
                     $.ajax({
                         type: 'POST',
-                        url: "webresources/contactus",
+                        url: "webresources/students",
                         success: function(data, textStatus, jqXHR) {
                          alert(data);
                         }
@@ -22,7 +22,7 @@
     <body>
         <div>Post Example</div>
         <div>
-            <form action="webresources/students/create" method="POST">
+            <form action="webresources/students" method="POST">
                Student Name: <input type="text" name="name"/><br/>
                 <input type="submit" value="Submit"/>
             </form>

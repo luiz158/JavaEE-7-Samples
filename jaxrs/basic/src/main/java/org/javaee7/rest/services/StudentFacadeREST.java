@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -13,6 +14,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 import org.javaee7.rest.entities.Student;
 
 /**
@@ -22,6 +26,7 @@ import org.javaee7.rest.entities.Student;
 @Stateless
 @Path("students")
 public class StudentFacadeREST extends AbstractFacade<Student> {
+
     @PersistenceContext(unitName = "pcstorePU")
     private EntityManager em;
 
@@ -40,9 +45,16 @@ public class StudentFacadeREST extends AbstractFacade<Student> {
     @Path("create")
 //    @Consumes({"application/xml", "application/json"})
     public void create(@FormParam("name") String name) {
-        Student student=new Student();
+        Student student = new Student();
         student.setName(name);
         super.create(student);
+    }
+
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public void post(@FormParam("name") String name) {
+//        System.out.println("Entered to multivalued form params");
+        System.out.println(name);
     }
 
     @PUT
@@ -86,9 +98,16 @@ public class StudentFacadeREST extends AbstractFacade<Student> {
         return String.valueOf(super.count());
     }
 
+//    @Path("/passingStudents/")
+//    @GET
+//    public Response getStudentsByYear(
+//            @DefaultValue("2002") @QueryParam("minyear") int minyear,
+//            @DefaultValue("2010") @QueryParam("maxyear") int maxyear) {
+//         return 
+//    }
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
 }

@@ -34,7 +34,8 @@ public class Student implements Serializable {
     @Size(max = 255)
     @Column(name = "NAME")
     private String name;
-
+    private int passingYear;
+    private Department department;
     public Student() {
     }
 
@@ -58,6 +59,24 @@ public class Student implements Serializable {
         this.name = name;
     }
 
+    public int getPassingYear() {
+        return passingYear;
+    }
+
+    public void setPassingYear(int passingYear) {
+        this.passingYear = passingYear;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+
+    
     @Override
     public int hashCode() {
         int hash = 0;

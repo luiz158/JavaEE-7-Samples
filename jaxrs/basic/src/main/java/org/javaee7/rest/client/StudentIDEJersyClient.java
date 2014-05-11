@@ -5,24 +5,11 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
-/**
- * Jersey REST client generated for REST resource:StudentFacadeREST
- * [students]<br>
- * USAGE:
- * <pre>
- *        StudentIDEJersyClient client = new StudentIDEJersyClient();
- *        Object response = client.XXX(...);
- *        // do whatever with response
- *        client.close();
- * </pre>
- *
- * @author Masudul Haque
- */
 
 public class StudentIDEJersyClient {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8080/PS-video-rest/webresources";
+    private static final String BASE_URI = "http://localhost:8080/basic/webresources";
 
     public StudentIDEJersyClient() {
         client = ClientBuilder.newClient();
