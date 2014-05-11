@@ -12,6 +12,6 @@
   <packaging>pom</packaging>
   <name>tutorial-jaxrs-sample</name>
   <modules>
-    <module>PS-video-rest</module>
+    <module>basic</module>
   </modules>
 </project>
